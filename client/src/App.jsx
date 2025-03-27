@@ -4,10 +4,13 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import GoogleLogin from './GoogleLogin'
 import HomePage from './HomePage'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import RefreshHandler from './RefreshHandler'
 
 
 
 function App() {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const GoogleAuthWrapper = () => {
     return (
@@ -17,12 +20,19 @@ function App() {
     )
   }
 
+
+  const PrivateRoute = ({ element }) => {
+    return isAuthenticated ? element : <Navigate to='/login' />;
+  }
+
+
   return (
     <BrowserRouter>
+      <RefreshHandler setIsAuthenticated={setIsAuthenticated} />
       <Routes>
         <Route path="/login" element={<GoogleAuthWrapper />} />
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<PrivateRoute element={<HomePage />} />} />
       </Routes>
     </BrowserRouter>
   )

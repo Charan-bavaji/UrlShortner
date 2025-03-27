@@ -7,7 +7,7 @@ const ShortenForm = ({ onShorten }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:8080/api/shorten", {
+        const response = await fetch("https://urlshortner-backend-tlbj.onrender.com/api/shorten", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ longUrl, customAlias }),

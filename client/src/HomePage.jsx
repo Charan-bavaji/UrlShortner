@@ -26,9 +26,9 @@ const HomePage = () => {
         setShortenedUrls([...shortenedUrls, newUrl]);
     };
     return (
-        <div>
+        <div className='flex justify-center items-center w-screen h-screen flex-col'>
             <h1>Welcome {userInfom?.name}</h1>
-            <div>
+            <div className='w-80'>
                 <ShortenForm onShorten={handleShorten} />
                 <ul className="mt-4">
                     {shortenedUrls.map((url, index) => (

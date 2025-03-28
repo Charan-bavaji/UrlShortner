@@ -1,6 +1,6 @@
 const URL = require('../models/urlModle.js');
-const shortid = require('shortid');
-
+// const shortid = require('shortid');
+const nanoid = require('nanoid');
 
 exports.shortner = async (req, res) => {
     const { longUrl, customAlias } = req.body;

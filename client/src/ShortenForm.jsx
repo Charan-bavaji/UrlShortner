@@ -27,7 +27,7 @@ const ShortenForm = ({ onShorten }) => {
             />
             <input
                 type="text"
-                placeholder="Custom alias (optional)"
+                placeholder="Custom alias"
                 value={customAlias}
                 onChange={(e) => setCustomAlias(e.target.value)}
                 className="p-2 border rounded"
